@@ -10,7 +10,6 @@ void write_flash(char data, int *addr){ //Writes data in address
     FCTL3 = 0xA500 | LOCKA;             //locks segment A, which contain important information
     while(BUSY & FCTL3);                //wait for flash memory to be ready
     *addr = data;                       //write data in addr
-    addr++;                             //increment pointer (which isnt really necessary)
     while(BUSY & FCTL3);                //wait for flash memory to be ready
     FCTL1 = 0xA500;                     //lock writing
     FCTL3 = 0xA500 | LOCK;
